@@ -1,0 +1,23 @@
+specVersion: v0.1.0
+package:
+  name: "waxmarketplaces"
+  version: v0.1.0
+
+protobuf:
+  files:
+    - waxmarketplaces.proto
+  importPaths:
+    - ./proto/v1
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ./target/wasm32-unknown-unknown/release/waxmarketplaces.wasm
+
+modules:
+  - name: map_events
+    kind: map
+    inputs:
+      - source: sf.antelope.type.v1.Block
+    output:
+      type: proto:antelope.waxmarketplaces.v1.AnyEvents
